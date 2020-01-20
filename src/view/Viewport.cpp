@@ -5,6 +5,7 @@
 #include "Viewport.h"
 #include "../model/calculation/Solver.h"
 #include "../model/calculation/BarnesHut/BarnesHutSolver.h"
+
 #include <Magnum/GlmIntegration/Integration.h>
 
 using namespace Magnum;
@@ -65,7 +66,7 @@ Viewport::Viewport(const Arguments &arguments) :
 
     for (Body b : config->bodies) {
 
-        auto bodyObject = new BodyAnimableObject(&manipulator, &b);
+        auto bodyObject = new BodyAnimableObject(&manipulator, &animables, &b);
 
         auto color = Color4::fromSrgb(Vector3(b.getColor().r, b.getColor().g, b.getColor().b), b.getColor().s / 2);
         auto scaling = Matrix4::scaling(Vector3(b.getRadius()));
